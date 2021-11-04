@@ -5,6 +5,8 @@ import RestyDisplay from '../components/resty/RestyDisplay';
 import RestyHeader from '../components/resty/RestyHeader';
 
 export default class RestyCage extends Component {
+  // state:
+  // urlInput, selectedMethod, history, response, loading, jsonHeader
   render() {
     return (
       <>
