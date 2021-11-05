@@ -4,6 +4,7 @@ import RestyHistory from '../components/resty/RestyHistory';
 import RestyDisplay from '../components/resty/RestyDisplay';
 import RestyHeader from '../components/resty/RestyHeader';
 import { fetchRequest } from '../services/fetchUtils';
+import './styles/RestyContainer.css';
 
 export default class RestyCage extends Component {
   state = {
@@ -35,7 +36,7 @@ export default class RestyCage extends Component {
     const { urlInput, selectedMethod, jsonInput, history, response } =
       this.state;
     return (
-      <>
+      <section className="container">
         <RestyHeader />
         <h1>RestyCageComponent</h1>
         <RestyForm
@@ -47,7 +48,7 @@ export default class RestyCage extends Component {
         />
         <RestyHistory history={history} />
         <RestyDisplay response={response} />
-      </>
+      </section>
     );
   }
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import MethodInput from './MethodInput';
+import '../../Containers/styles/RestyContainer.css';
 
 function RestyForm({ onSubmit, onInput, urlInput, selectedMethod, jsonInput }) {
   const methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="form">
       <label htmlFor="urlInput">Add Url Here: </label>
       <input
         id="urlInput"
@@ -17,6 +18,7 @@ function RestyForm({ onSubmit, onInput, urlInput, selectedMethod, jsonInput }) {
       {methods.map((method) => (
         <MethodInput
           method={method}
+          key={method}
           onInput={onInput}
           selectedMethod={selectedMethod}
         />

@@ -1,0 +1,24 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'header header header header'
+    'history form form form'
+    'history results results results'
+    'history results results results'
+    'history results results results';
+}
+.header {
+  grid-area: header;
+}
+.history {
+  grid-area: history;
+}
+.form {
+  grid-area: form;
+}
+.results {
+  grid-area: results;
+}

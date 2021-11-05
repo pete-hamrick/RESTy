@@ -6,8 +6,7 @@ function MethodInput({ method, onInput, selectedMethod }) {
       <input
         id={method}
         type="radio"
-        key={method}
-        name="methodSelector"
+        name={method}
         value={method}
         onChange={onInput}
         checked={selectedMethod === method}

@@ -1,9 +1,9 @@
 import React from 'react';
-import '../styles/RestyHistory.css';
+import '../../Containers/styles/RestyContainer.css';
 
 function RestyHistory() {
   return (
-    <section className="history-container">
+    <section className="history">
       <p>history item 1</p>
       <p>history item 2</p>
     </section>
