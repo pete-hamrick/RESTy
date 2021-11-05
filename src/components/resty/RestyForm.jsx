@@ -16,23 +16,8 @@ function RestyForm({ onSubmit, onInput, urlInput, selectedMethod, jsonInput }) {
       ></input>
 
       {methods.map((method) => (
-        <MethodInput
-          method={method}
-          key={method}
-          onInput={onInput}
-          selectedMethod={selectedMethod}
-        />
+        <MethodInput method={method} key={method} onInput={onInput} />
       ))}
-      {/* <input id="GET" type="radio" name="methodSelector" value={method}></input>
-      <label htmlFor="GET">GET</label>
-      <input id="POST" type="radio" name="methodSelector"></input>
-      <label htmlFor="POST">POST</label>
-      <input id="PUT" type="radio" name="methodSelector"></input>
-      <label htmlFor="PUT">PUT</label>
-      <input id="PATCH" type="radio" name="methodSelector"></input>
-      <label htmlFor="PATCH">PATCH</label>
-      <input id="DELETE" type="radio" name="methodSelector"></input>
-      <label htmlFor="DELETE">DELETE</label> */}
 
       <button aria-label="goButton">Go</button>
 

@@ -10,7 +10,7 @@ export default class RestyCage extends Component {
   state = {
     loading: true,
     urlInput: '',
-    selectedMethod: '',
+    methodSelection: '',
     history: [],
     response: [],
     jsonInput: '',

@@ -2,13 +2,12 @@ import React from 'react';
 import ReactJson from 'react-json-view';
 import '../../Containers/styles/RestyContainer.css';
 
-function RestyDisplay({}) {
+function RestyDisplay({ response }) {
   return (
     <section aria-label="resultsDisplay" className="results">
-      <ReactJson />
+      <ReactJson src={response} />
     </section>
   );
 }
-// TODO add src to ReactJson
 
 export default RestyDisplay;
