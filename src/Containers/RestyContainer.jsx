@@ -3,41 +3,50 @@ import RestyForm from '../components/resty/RestyForm';
 import RestyHistory from '../components/resty/RestyHistory';
 import RestyDisplay from '../components/resty/RestyDisplay';
 import RestyHeader from '../components/resty/RestyHeader';
+import { fetchRequest } from '../services/fetchUtils';
 
 export default class RestyCage extends Component {
-  // state:
-  // urlInput, selectedMethod, history, response, loading, jsonHeader
   state = {
     loading: true,
     urlInput: '',
-    method: '',
+    selectedMethod: '',
     history: [],
-    response: {}, //string maybe? array?
+    response: [],
     jsonInput: '',
   };
 
-  // compdidmount
-  // set state loading false
-  // componentDidMount() {
-  //   this.setState({ loading: false });
-  // }
+  componentDidMount() {
+    this.setState({ loading: false });
+  }
 
-  // handle input
-  // set state to target value
+  handleChange = ({ target }) => {
+    this.setState({ [target.name]: target.value });
+  };
 
-  // handle submit async passing urlInput, method, jsonInput
-  // prevent default
-  // set state loading true
-  // await fetchRequest passing urlInput, method, jsonInput
-  // set state loading false,
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { urlInput, selectedMethod, jsonInput } = this.state;
+    this.setState({ loading: true });
+    const response = await fetchRequest(selectedMethod, urlInput, jsonInput);
+    this.setState({ response, loading: false });
+  };
+
   render() {
+    const { urlInput, selectedMethod, jsonInput, history, response } =
+      this.state;
     return (
       <>
         <RestyHeader />
         <h1>RestyCageComponent</h1>
-        <RestyForm />
-        <RestyHistory />
-        <RestyDisplay />
+        <RestyForm
+          urlInput={urlInput}
+          selectedMethod={selectedMethod}
+          jsonInput={jsonInput}
+          onInput={this.handleChange}
+          onSubmit={this.handleSubmit}
+        />
+        <RestyHistory history={history} />
+        <RestyDisplay response={response} />
       </>
     );
   }

@@ -9,7 +9,7 @@ export const fetchRequest = async (method, urlInput, jsonInput) => {
     method,
     headers: {
       'Content-Type': 'application/json',
-      [jsonInput.length ? 'body' : null]: [jsonInput.length ? jsonInput : null],
+      [jsonInput.length ? body : null]: [jsonInput.length ? jsonInput : null],
     },
   });
   const response = await res.json();
