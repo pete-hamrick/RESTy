@@ -1,7 +1,11 @@
 import React from 'react';
 
 function RestyHeader() {
-  return <h1>RestyNavBar</h1>;
+  return (
+    <header>
+      <h1>RESTy</h1>
+    </header>
+  );
 }
 
 export default RestyHeader;
