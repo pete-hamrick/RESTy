@@ -1,15 +1,16 @@
 import React from 'react';
-import '../../Containers/styles/RestyContainer.css';
 
-function RestyHistory() {
+function RestyHistory({ history }) {
   return (
-    <section className="history">
-      <p>history item 1</p>
-      <p>history item 2</p>
+    <section>
+      {history.map((item) => {
+        <div>
+          <h6>{item.method}</h6>
+          <p>{item.url}</p>
+        </div>;
+      })}
     </section>
   );
 }
-// TODO pass down history as props
-// map through history and
 
 export default RestyHistory;

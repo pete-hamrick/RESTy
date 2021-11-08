@@ -4,7 +4,7 @@ import RestyHistory from '../components/resty/RestyHistory';
 import RestyDisplay from '../components/resty/RestyDisplay';
 import RestyHeader from '../components/resty/RestyHeader';
 import { fetchRequest } from '../services/fetchUtils';
-import './styles/RestyContainer.css';
+import style from './styles/RestyContainer.css';
 
 export default class RestyCage extends Component {
   state = {
@@ -26,28 +26,32 @@ export default class RestyCage extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { urlInput, selectedMethod, jsonInput } = this.state;
-    this.setState({ loading: true });
-    const response = await fetchRequest(selectedMethod, urlInput, jsonInput);
+    const { urlInput, methodSelection, jsonInput, history } = this.state;
+    this.setState({
+      loading: true,
+      methodSelection,
+      history: [...history, { url: urlInput, method: methodSelection }],
+    });
+    const response = await fetchRequest(methodSelection, urlInput, jsonInput);
     this.setState({ response, loading: false });
   };
 
   render() {
-    const { urlInput, selectedMethod, jsonInput, history, response } =
+    const { urlInput, methodSelection, jsonInput, history, response } =
       this.state;
     return (
-      <section className="container">
-        <RestyHeader />
-        <h1>RestyCageComponent</h1>
+      <section className={style.container}>
+        <RestyHeader className={style.header} />
         <RestyForm
+          className={style.form}
           urlInput={urlInput}
-          selectedMethod={selectedMethod}
+          methodSelection={methodSelection}
           jsonInput={jsonInput}
           onInput={this.handleChange}
           onSubmit={this.handleSubmit}
         />
-        <RestyHistory history={history} />
-        <RestyDisplay response={response} />
+        <RestyHistory className={style.history} history={history} />
+        <RestyDisplay className={style.display} response={response} />
       </section>
     );
   }
